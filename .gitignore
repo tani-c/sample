@@ -1,0 +1,8 @@
+#Idea Files which should not be shared
+.idea/
+
+#Build Directory
+build/
+
+#Gradle Directory
+.gradle/
