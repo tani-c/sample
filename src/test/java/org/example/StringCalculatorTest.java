@@ -26,4 +26,19 @@ public class StringCalculatorTest {
     public void testNumbersWithNewlineDelimiter() {
         assertEquals(6, calculator.add("1\n2,3"));
     }
+
+    @Test
+    public void testCustomDelimiter() {
+        assertEquals(6, calculator.add("//;\n1;2;3"));
+    }
+    @Test
+    public void testHandlesNegativeNumbers() {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> calculator.add("1,-2,3,-1,-7"));
+        assertEquals("Negative numbers not allowed: [-2, -1, -7]", exception.getMessage());
+    }
+
+    @Test
+    public void testIgnoreInvalidNumbers() {
+        assertEquals(3, calculator.add("1,abc,2"));
+    }
 }
